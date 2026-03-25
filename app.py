@@ -59,7 +59,12 @@ html, body, [class*="css"], [data-testid="stAppViewContainer"] {{
 .tp-hero {{
     padding: 90px 52px 70px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
 }}
+.tp-hero-left {{}}
 .tp-eyebrow {{
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
@@ -80,7 +85,7 @@ html, body, [class*="css"], [data-testid="stAppViewContainer"] {{
 }}
 .tp-h1 {{
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 10vw, 120px);
+    font-size: clamp(64px, 8vw, 110px);
     line-height: 0.9;
     letter-spacing: 2px;
     color: #dde1e7;
@@ -89,42 +94,35 @@ html, body, [class*="css"], [data-testid="stAppViewContainer"] {{
 .tp-h1 span {{ color: {ACCENT}; }}
 .tp-hero-sub {{
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
+    font-size: 13px;
     color: #606870;
     line-height: 1.9;
-    max-width: 540px;
     font-weight: 300;
 }}
-
-.tp-about {{
-    padding: 72px 52px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 60px;
-    align-items: start;
+.tp-hero-right {{
+    border-left: 1px solid rgba(255,255,255,0.06);
+    padding-left: 60px;
 }}
 .tp-about-label {{
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 3px;
     color: #606870;
-    padding-top: 4px;
+    margin-bottom: 20px;
 }}
 .tp-about-label::before {{
     content: '';
     display: block;
     width: 2px;
-    height: 24px;
+    height: 22px;
     background: {ACCENT};
     margin-bottom: 12px;
 }}
 .tp-about-body {{
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
     color: #7a8290;
     line-height: 1.95;
-    max-width: 720px;
     white-space: pre-line;
 }}
 
@@ -262,20 +260,18 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# HERO
-st.markdown("""
-<div class="tp-hero">
-  <div class="tp-eyebrow">Forex Technical Analysis</div>
-  <div class="tp-h1">PRECISION<br><span>IN THE</span><br>LEVELS</div>
-  <div class="tp-hero-sub">Hand-drawn support &amp; resistance zones across major forex pairs.<br>No indicators. No noise. Just price.</div>
-</div>
-""", unsafe_allow_html=True)
-
-# ABOUT
+# HERO + ABOUT (two columns)
 st.markdown(f"""
-<div class="tp-about">
-  <div class="tp-about-label">About</div>
-  <div class="tp-about-body">{ABOUT_TEXT.strip()}</div>
+<div class="tp-hero">
+  <div class="tp-hero-left">
+    <div class="tp-eyebrow">Forex Technical Analysis</div>
+    <div class="tp-h1">PRECISION<br><span>IN THE</span><br>LEVELS</div>
+    <div class="tp-hero-sub">Hand-drawn support &amp; resistance zones across major forex pairs.<br>No indicators. No noise. Just price.</div>
+  </div>
+  <div class="tp-hero-right">
+    <div class="tp-about-label">About</div>
+    <div class="tp-about-body">{ABOUT_TEXT.strip()}</div>
+  </div>
 </div>
 """, unsafe_allow_html=True)
 
